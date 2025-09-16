@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume | Brady Kuhn</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="pcb-background"></canvas>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">BK</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About Me</a></li>
+                    <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="resume.html" class="nav-link active">Resume</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="content-panel">
+            <h1>My Resume</h1>
+            <p style="text-align: center; margin-bottom: 2rem;">
+                <a href="resume.pdf" class="btn" download>Download PDF</a>
+            </p>
+
+            <div class="resume-pdf-container">
+                <!-- IMPORTANT: Make sure you have a file named "resume.pdf" in the same folder as this html file. -->
+                <iframe src="resume.pdf" title="Brady Kuhn's Resume"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <a href="mailto:bradykuhn1@outlook.com">Email: bradykuhn1@outlook.com</a>
+            <a href="https://www.linkedin.com/in/brady-kuhn/" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script src="background.js"></script>
+</body>
+</html>

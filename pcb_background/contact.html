@@ -1,0 +1,78 @@
+--- START OF FILE contact.html ---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Brady Kuhn</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="pcb-background"></canvas>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">BK</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About Me</a></li>
+                    <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="resume.html" class="nav-link">Resume</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="content-panel">
+            <h1>Get In Touch</h1>
+            <p>
+                I'm always open to discussing professional opportunities, new project ideas, and feedback on my work. Please feel free to send me a message using the form below.
+            </p>
+
+            <div class="contact-layout">
+                <!-- Left Column: Form -->
+                <div class="contact-form-column">
+                    <form action="https://formspree.io/f/movnqyrj" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="Name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="Email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="Message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Right Column: Contact Information -->
+                <div class="contact-info-panel">
+                    <h2>Contact Information</h2>
+                    <p><strong>Phone:</strong> (515) 490-0610</p>
+                    <p><strong>Email:</strong> <a href="mailto:bradykuhn1@outlook.com">bradykuhn1@outlook.com</a></p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/brady-kuhn/" target="_blank">linkedin.com/in/brady-kuhn/</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/bkuhn4" target="_blank">github.com/bkuhn4</a></p>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <a href="mailto:bradykuhn1@outlook.com">Email: bradykuhn1@outlook.com</a>
+            <a href="https://www.linkedin.com/in/brady-kuhn/" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script src="background.js"></script>
+</body>
+</html>
