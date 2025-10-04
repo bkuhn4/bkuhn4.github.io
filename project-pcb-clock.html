@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About Me</a></li>
+                    <li class="nav-item"><a href="projects.html" class="nav-link active">Projects</a></li>
+                    <li class="nav-item"><a href="resume.html" class="nav-link">Resume</a></li>
+                    <li class="nav-item"><a href="reflections.html" class="nav-link">Reflections</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        }
+        .project-description ul {
+            padding-left: 2rem; /* Adds indentation to the bullet points */
+            margin-bottom: 1.5rem; /* Adds space after the list */
+        }
+        .project-description li {
+            margin-bottom: 0.75rem; /* Adds space between each bullet point */
+            padding-left: 0.5rem; /* Aligns text neatly after the bullet */
+        }
+        /* Make the first subheading have a little less top margin */
+        .project-description h3:first-of-type {
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="pcb-background"></canvas>
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">BK</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About Me</a></li>
+                    <li class="nav-item"><a href="projects.html" class="nav-link active">Projects</a></li>
+                    <li class="nav-item"><a href="resume.html" class="nav-link">Resume</a></li>
+                    <li class="nav-item"><a href="reflections.html" class="nav-link">Reflections</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        <section class="content-panel project-detail-page">
+            <p class="breadcrumbs"><a href="projects.html">Projects</a> > PCB Clock</p>
+            <h1>PCB Clock</h1>
+            <h2>ESP32 IoT Clock</h2>
+            <img src="images/pcb_clock_1.jpg" alt="PCB Clock" class="project-main-image">
+            <div class="project-description">
+
+                <h3>Project Overview</h3>
+                <p>For this personal project, I challenged myself to create an ESP32-based board with sensor integration, IoT capability, and a fun user-experience. This was one of my first PCBs, so the objective was to learn several different aspects of PCB design and prepare a demonstration of my skills to present to employers.</p>
+                
+                <h3>Key Features</h3>
+                <ul>
+                    <li>7 segment displays and 60 LEDs to display time</li>
+                    <li>WiFi connectivity to sync time</li>
+                    <li>Light and temperature sensors</li>
+                    <li>Piezo buzzer to set alarms and timers</li>
+                    <li>USB-C power and programming</li>
+                    <li>An interactive arcade-style game</li>
+                </ul>
+
+                <h3>Skills & Learning</h3>
+                <p>Like many of my projects, the board was made in KiCad and I used reference component data sheets and other similar projects in the design. This project greatly strengthened my hardware design and embedded programming skills. There are several issues with this first revision, but I've debugged them and learned from those mistakes.</p>
+                
+            </div>
+            <p style="text-align: center; margin-top: 3rem;">
+                <a href="projects.html" class="btn">Back to All Projects</a>
+            </p>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <a href="mailto:bradykuhn1@outlook.com">Email: bradykuhn1@outlook.com</a>
+            <a href="https://www.linkedin.com/in/brady-kuhn/" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+    <script src="background.js"></script>
+</body>
+</html>

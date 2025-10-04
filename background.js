@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         straightChance: 0.95, // << Increased to further encourage straight lines
         pulseDensityRatio: 10,
         minPulseCount: 5,
-        baseSpeed: 0.3,
+        baseSpeed: 0.2,
         hoverSpeed: 1.0,
         hoverDistance: 80,
     };
@@ -197,7 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let speed = config.baseSpeed;
             if (mouse.x !== null) {
                 const dist = Math.sqrt(Math.pow(pX - mouse.x, 2) + Math.pow(pY - mouse.y, 2));
-                if (dist < config.hoverDistance) speed = config.hoverSpeed;
+                // Speed increases as you get closer, up to hoverSpeed above baseSpeed
+                speed += Math.max(0, (config.hoverSpeed - config.baseSpeed) * (1 - Math.min(dist, config.hoverDistance) / config.hoverDistance));
             }
 
             const segmentLength = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflections | Brady Kuhn</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .pdf-item iframe {
+            width: 100%;
+            height: 60vh;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: white;
+        }
+        .content-panel h1 { text-align: center; }
+    </style>
+</head>
+<body>
+    <canvas id="pcb-background"></canvas>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">BK</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About Me</a></li>
+                    <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="resume.html" class="nav-link">Resume</a></li>
+                    <li class="nav-item"><a href="reflections.html" class="nav-link active">Reflections</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="content-panel">
+            <h1>Reflections</h1>
+            <p style="text-align:center; color: #666;">Place your reflective PDFs below. Replace the src attributes with your actual PDF filenames.</p>
+
+            <div class="pdf-grid">
+                <div class="pdf-item">
+                    <iframe src="pdfs/reflection1.pdf" title="Reflection 1"></iframe>
+                </div>
+                <div class="pdf-item">
+                    <iframe src="pdfs/reflection2.pdf" title="Reflection 2"></iframe>
+                </div>
+                <div class="pdf-item">
+                    <iframe src="pdfs/reflection3.pdf" title="Reflection 3"></iframe>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <a href="mailto:bradykuhn1@outlook.com">Email: bradykuhn1@outlook.com</a>
+            <a href="https://www.linkedin.com/in/brady-kuhn/" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script src="background.js"></script>
+</body>
+</html>

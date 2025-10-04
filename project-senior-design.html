@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senior Design | Brady Kuhn Projects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="pcb-background"></canvas>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">BK</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About Me</a></li>
+                    <li class="nav-item"><a href="projects.html" class="nav-link active">Projects</a></li>
+                    <li class="nav-item"><a href="resume.html" class="nav-link">Resume</a></li>
+                    <li class="nav-item"><a href="reflections.html" class="nav-link">Reflections</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="content-panel project-detail-page">
+            <p class="breadcrumbs"><a href="projects.html">Projects</a> > Senior Design</p>
+
+            <h1>High-Precision Position Tracking via GPS and IMU</h1>
+            <h2>Senior Design Project</h2>
+
+            <img src="images/sd_placeholder.jpg" alt="Placeholder image" class="project-main-image">
+
+            <div class="project-description">
+                <h3>Project Description</h3>
+                <p>Synthetic aperture radar (SAR) imaging requires accurate position information on the order of a fraction of a
+wavelength. At millimeter wave frequencies, the wavelength is on the order of single digit millimeters. Performing
+SAR imaging at these frequencies, in particular using small drones, requires position accuracies on the order of 0.1
+mm or smaller. The goal of the project is to design a system relying on a combination of GPS and IMUs to track a
+position of the radar sensor (for example when placed on a drone) with such high accuracy.</p>
+
+                <h3>My Role</h3>
+                <p>My experience in circuit design and PCB layout will be utilized to help develop the hardware aspect of the project. The final product will need to be a small PCB containing a GPS module, antenna, IMU, and the other necessary components that can be mounted to a drone.</p>
+
+                <h3>Skills and Knowledge Gained</h3>
+                <p>Though this project is still in early development, I've already learned about topics such as sensor fusion, signal processing, and GNSS technology.</p>
+
+                <h3>Big Picture Contribution</h3>
+                <p>There is no one specific purpose this project will have. High precision tracking systems have a wide range of applications from autonomous vehicle navigation to precision agriculture and beyond. Our objective is to develop an affordable yet versatile solution with the best accuracy we can achieve.</p>
+            </div>
+
+            <p style="text-align: center; margin-top: 3rem;">
+                <a href="projects.html" class="btn">Back to All Projects</a>
+            </p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <a href="mailto:bradykuhn1@outlook.com">Email: bradykuhn1@outlook.com</a>
+            <a href="https://www.linkedin.com/in/brady-kuhn/" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script src="background.js"></script>
+</body>
+</html>

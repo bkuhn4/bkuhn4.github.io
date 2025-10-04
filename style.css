@@ -9,8 +9,8 @@
     --dark-background: #0A0A14;
     --light-background: #fdfdfd;
     --light-border: #eeeeee;
-    --light-text: #333333;
-    --light-text-secondary: #555555;
+    --light-text: #222222;
+    --light-text-secondary: #444444;
     --light-btn-hover: #333333;
 }
 
@@ -161,16 +161,17 @@ h2 { font-size: 2.2rem; margin-bottom: 1rem; }
     align-items: center;
 }
 
-.about-headshot {
+.about-layout .about-headshot {
     width: 100%;
-    max-width: 300px;
-    border-radius: 50%; /* Makes the image a circle */
+    max-width: 380px;
+    height: 380px;
+    border-radius: 12px; /* Square with slightly rounded corners */
     aspect-ratio: 1 / 1;
     object-fit: cover;
     box-shadow: 0 5px 25px rgba(0,0,0,0.15);
     justify-self: center;
+    display: block;
 }
-
 
 /* --- Projects Page (Updated for light theme) --- */
 .projects-grid {
@@ -207,16 +208,35 @@ h2 { font-size: 2.2rem; margin-bottom: 1rem; }
 
 /* --- Resume Page --- */
 .resume-pdf-container {
-    width: 100%;
+    width: 100vw;
+    max-width: 1000px;
+    margin-left: 50%;
+    transform: translateX(-50%);
     height: 80vh;
     border: 1px solid var(--light-border);
     border-radius: 5px;
     overflow: hidden;
+    background: #fff;
+    margin-bottom: 3.5rem;
 }
 .resume-pdf-container iframe {
     width: 100%;
     height: 100%;
     border: none;
+}
+
+/* Internship section styling */
+.internship-section {
+    margin-top: 2rem;
+}
+
+.internship-entry {
+    margin-bottom: 2rem;
+}
+
+.internship-section ul {
+    margin-left: 2rem;
+    padding-left: 1rem;
 }
 
 /* --- HOME PAGE SPECIFIC STYLES FOR RESUME SECTION LOGOS --- */
@@ -460,7 +480,7 @@ textarea.form-control {
 
 .project-main-image {
     width: 100%;
-    max-width: 800px; /* Adjust max-width as desired for your main image */
+    max-width: 500px; /* Adjust max-width as desired for your main image */
     height: auto;
     display: block;
     margin: 0 auto 2.5rem auto; /* Center image and add spacing below */
@@ -477,15 +497,16 @@ textarea.form-control {
 
 .project-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust minmax for image size */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* auto-fill prevents stretching */
     gap: 1.5rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    justify-content: center; /* Center gallery when fewer images */
 }
 
 .project-gallery img {
     width: 100%;
-    height: 180px; /* Consistent height for gallery images */
+    height: 400px; /* Increased height for taller images */
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.08);
@@ -595,3 +616,1827 @@ textarea.form-control {
         padding-top: 1rem;
     }
 }
+
+/* --- Global Styles & Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #89b4fa; /* From your JS file */
+    --border-color: rgba(137, 180, 250, 0.25);
+    --text-color: #E0E0E0;
+    --text-secondary: #A0A0B0;
+    --dark-background: #0A0A14;
+    --light-background: #fdfdfd;
+    --light-border: #eeeeee;
+    --light-text: #222222;
+    --light-text-secondary: #444444;
+    --light-btn-hover: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--dark-background); /* Dark blue/black background */
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto; /* This tells the main content to grow and fill available space */
+}
+
+/* --- Canvas Background --- */
+#pcb-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Place it behind all content */
+}
+
+/* --- Main Layout & NEW Floating Panel --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* REPLACES .glass-card */
+.content-panel {
+    background-color: var(--light-background);
+    color: var(--light-text);
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    margin-top: 8rem; /* Space for the fixed nav */
+    margin-bottom: 4rem; /* Space before the footer */
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 10, 20, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 2rem;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.nav-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-logo:hover {
+    color: var(--text-color);
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+}
+
+.nav-item {
+    margin-left: 2rem;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-bottom-color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/* --- General Content Styling (for light panels) --- */
+.content-panel h1,
+.content-panel h2,
+.content-panel h3 {
+    color: var(--light-text);
+}
+
+.content-panel p {
+    color: var(--light-text-secondary);
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 3rem; margin-bottom: 1rem; }
+h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+
+.btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--dark-background);
+    border: 2px solid var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--light-btn-hover);
+    color: var(--light-background);
+    border-color: var(--light-btn-hover);
+}
+
+/* --- About Me Page (Headshot Layout) --- */
+.about-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-layout .about-headshot {
+    width: 100%;
+    max-width: 380px;
+    height: 380px;
+    border-radius: 12px; /* Square with slightly rounded corners */
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+    justify-self: center;
+    display: block;
+}
+
+/* --- Projects Page (Updated for light theme) --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background: #ffffff;
+    border: 1px solid var(--light-border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.project-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    background-color: #e0e0e0; /* Lighter placeholder color */
+}
+
+.project-card .project-info {
+    padding: 1.5rem;
+}
+
+/* --- Resume Page --- */
+.resume-pdf-container {
+    width: 100vw;
+    max-width: 1000px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    height: 80vh;
+    border: 1px solid var(--light-border);
+    border-radius: 5px;
+    overflow: hidden;
+    background: #fff;
+    margin-bottom: 3.5rem;
+}
+.resume-pdf-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Internship section styling */
+.internship-section {
+    margin-top: 2rem;
+}
+
+.internship-entry {
+    margin-bottom: 2rem;
+}
+
+.internship-section ul {
+    margin-left: 2rem;
+    padding-left: 1rem;
+}
+
+/* --- HOME PAGE SPECIFIC STYLES FOR RESUME SECTION LOGOS --- */
+.resume-logos {
+    display: flex; /* Makes logos display side-by-side */
+    align-items: center; /* Vertically aligns logos */
+    gap: 2.5rem; /* Space between logos, adjust as needed */
+    flex-wrap: wrap; /* Allows logos to wrap on smaller screens if space is too constrained */
+    justify-content: flex-start; /* Align logos to the start of their container */
+    padding: 1rem 0; /* Vertical padding within the logo container */
+    width: 100%; /* Take full width of its grid column */
+}
+
+.resume-logos img {
+    /* Critical overrides for images within the resume-logos container */
+    max-height: 160px !important; /* Adjusted height for better fit within 1fr column, adjust as needed */
+    width: auto !important; /* Crucial: Force width to auto to respect aspect ratio and flex layout */
+    object-fit: contain; /* Ensures the entire logo is visible without cropping */
+    box-shadow: none !important; /* Force removal of shadow */
+    background-color: var(--light-background) !important; /* Force solid background to fix checkerboard */
+    border-radius: 0 !important; /* Force removal of border-radius from general img styling */
+    flex-shrink: 0; /* Prevent images from shrinking below their intrinsic size */
+    padding: 0; /* No additional internal padding on the image itself */
+    border: none !important; /* Ensure no borders are applied from other rules */
+}
+
+
+/* --- Contact Page (Updated for light theme) --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--light-text-secondary);
+}
+
+.form-control {
+    width: 100%;
+    padding: 1rem;
+    background: #f0f0f0; /* Light grey background for fields */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: var(--light-text);
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(137, 180, 250, 0.4);
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* --- Contact Page Layout --- */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Form column takes 2/3, info column takes 1/3 */
+    gap: 3rem; /* Space between the two columns */
+    margin-top: 2.5rem; /* Space below the intro text */
+    align-items: start; /* Align items to the top of their grid cell */
+}
+
+.contact-form-column {
+    /* No specific styling needed here, it just contains the form */
+}
+
+.contact-info-panel {
+    /* slightly darker background for better contrast */
+    background-color: #eceff1; /* adjust hex to taste: lower = darker */
+    padding: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    color: var(--light-text);
+}
+
+.contact-info-panel h2 {
+    font-size: 1.5rem;
+    color: var(--light-text);
+    margin-bottom: 1.5rem;
+}
+
+.contact-info-panel p {
+    color: var(--light-text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.contact-info-panel p:last-of-type {
+    margin-bottom: 0;
+}
+
+.contact-info-panel strong {
+    color: var(--light-text);
+}
+
+.contact-info-panel a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info-panel a:hover {
+    color: var(--light-btn-hover);
+    text-decoration: underline;
+}
+
+.contact-motto {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--light-border);
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+
+/* --- HOME PAGE STYLES (Largely Unchanged) --- */
+.home-hero {
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-color);
+}
+.hero-text h1 {
+    font-size: 5rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--primary-color);
+}
+.hero-text p {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+.home-summary-container {
+    background-color: var(--light-background);
+    color: var(--light-text);
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    position: relative;
+    z-index: 1;
+}
+.page-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 5rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 4rem;
+}
+.page-summary:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+/* This rule applies to 2nd and 4th page-summary. Resume is 3rd. */
+.page-summary:nth-child(even) {
+    grid-template-areas: "content image";
+}
+.page-summary:nth-child(even) img { grid-area: image; }
+.page-summary:nth-child(even) .summary-content { grid-area: content; }
+
+/* General styling for images directly inside .page-summary, this needs to be overridden for logos */
+.page-summary img {
+    width: 100%; /* This is a common conflict */
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+/* No change needed for .home-summary-container .btn */
+
+
+/* --- FOOTER --- */
+.site-footer {
+    background: var(--dark-background);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+.site-footer .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 0 2rem;
+    flex-wrap: wrap;
+}
+.site-footer p, .site-footer a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin: 0;
+    transition: color 0.3s;
+    font-size: 0.9rem;
+}
+.site-footer a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Project Detail Page Styles --- */
+.project-detail-page h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.project-detail-page h2 {
+    text-align: center;
+    color: var(--light-text-secondary);
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+}
+
+.breadcrumbs {
+    font-size: 0.9rem;
+    color: var(--light-text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.breadcrumbs a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.project-main-image {
+    width: 100%;
+    max-width: 500px; /* Adjust max-width as desired for your main image */
+    height: auto;
+    display: block;
+    margin: 0 auto 2.5rem auto; /* Center image and add spacing below */
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    object-fit: cover; /* Ensures image covers area, might crop slightly if aspect ratio differs */
+}
+
+.project-description {
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* auto-fill prevents stretching */
+    gap: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    justify-content: center; /* Center gallery when fewer images */
+}
+
+.project-gallery img {
+    width: 100%;
+    height: 400px; /* Increased height for taller images */
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.project-gallery img:hover {
+    transform: scale(1.02);
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    h1 { font-size: 2.5rem; }
+    .content-panel {
+        margin-top: 6rem;
+        padding: 1.5rem;
+    }
+
+    .about-layout {
+        grid-template-columns: 1fr; /* Stack on mobile */
+        text-align: center;
+    }
+
+    .about-headshot {
+        max-width: 200px;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-text h1 {
+        font-size: 3rem;
+    }
+    .hero-text p {
+        font-size: 1.2rem;
+    }
+
+    .page-summary {
+        grid-template-columns: 1fr; /* Stack on mobile */
+    }
+
+    /* Override for the resume summary specifically on mobile */
+    .home-summary-container .page-summary:nth-child(3) {
+        grid-template-columns: 1fr; /* Stack logo container and text container */
+        grid-template-rows: auto auto; /* Define rows for stacking */
+    }
+
+    .page-summary:nth-child(even) {
+        grid-template-areas: unset;
+    }
+    .page-summary:nth-child(even) img,
+    .page--summary:nth-child(even) .summary-content {
+       grid-area: unset;
+    }
+
+    .page-summary img {
+       grid-row: 1;
+    }
+
+    .site-footer .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .resume-logos {
+        justify-content: center; /* Ensure logos are centered on small screens */
+    }
+
+    /* Responsive adjustments for project detail page */
+    .project-detail-page h1 {
+        font-size: 2.5rem;
+    }
+    .project-detail-page h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .project-main-image {
+        margin-bottom: 1.5rem;
+    }
+    .project-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    .project-gallery {
+        grid-template-columns: 1fr; /* Stack gallery images on small screens */
+    }
+    .project-gallery img {
+        height: 200px; /* Adjust height for stacked gallery images */
+    }
+
+    /* Responsive adjustments for Contact Page */
+    .contact-layout {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        gap: 2rem;
+    }
+
+    .contact-info-panel {
+        padding: 1.5rem;
+    }
+
+    .contact-info-panel h2 {
+        margin-bottom: 1rem;
+    }
+    .contact-info-panel .contact-motto {
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+}
+
+/* --- Global Styles & Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #89b4fa; /* From your JS file */
+    --border-color: rgba(137, 180, 250, 0.25);
+    --text-color: #E0E0E0;
+    --text-secondary: #A0A0B0;
+    --dark-background: #0A0A14;
+    --light-background: #fdfdfd;
+    --light-border: #eeeeee;
+    --light-text: #222222;
+    --light-text-secondary: #444444;
+    --light-btn-hover: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--dark-background); /* Dark blue/black background */
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto; /* This tells the main content to grow and fill available space */
+}
+
+/* --- Canvas Background --- */
+#pcb-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Place it behind all content */
+}
+
+/* --- Main Layout & NEW Floating Panel --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* REPLACES .glass-card */
+.content-panel {
+    background-color: var(--light-background);
+    color: var(--light-text);
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    margin-top: 8rem; /* Space for the fixed nav */
+    margin-bottom: 4rem; /* Space before the footer */
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 10, 20, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 2rem;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.nav-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-logo:hover {
+    color: var(--text-color);
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+}
+
+.nav-item {
+    margin-left: 2rem;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-bottom-color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/* --- General Content Styling (for light panels) --- */
+.content-panel h1,
+.content-panel h2,
+.content-panel h3 {
+    color: var(--light-text);
+}
+
+.content-panel p {
+    color: var(--light-text-secondary);
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 3rem; margin-bottom: 1rem; }
+h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+
+.btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--dark-background);
+    border: 2px solid var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--light-btn-hover);
+    color: var(--light-background);
+    border-color: var(--light-btn-hover);
+}
+
+/* --- About Me Page (Headshot Layout) --- */
+.about-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-layout .about-headshot {
+    width: 100%;
+    max-width: 380px;
+    height: 380px;
+    border-radius: 12px; /* Square with slightly rounded corners */
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+    justify-self: center;
+    display: block;
+}
+
+/* --- Projects Page (Updated for light theme) --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background: #ffffff;
+    border: 1px solid var(--light-border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.project-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    background-color: #e0e0e0; /* Lighter placeholder color */
+}
+
+.project-card .project-info {
+    padding: 1.5rem;
+}
+
+/* --- Resume Page --- */
+.resume-pdf-container {
+    width: 100vw;
+    max-width: 1000px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    height: 80vh;
+    border: 1px solid var(--light-border);
+    border-radius: 5px;
+    overflow: hidden;
+    background: #fff;
+    margin-bottom: 3.5rem;
+}
+.resume-pdf-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Internship section styling */
+.internship-section {
+    margin-top: 2rem;
+}
+
+.internship-entry {
+    margin-bottom: 2rem;
+}
+
+.internship-section ul {
+    margin-left: 2rem;
+    padding-left: 1rem;
+}
+
+/* --- HOME PAGE SPECIFIC STYLES FOR RESUME SECTION LOGOS --- */
+.resume-logos {
+    display: flex; /* Makes logos display side-by-side */
+    align-items: center; /* Vertically aligns logos */
+    gap: 2.5rem; /* Space between logos, adjust as needed */
+    flex-wrap: wrap; /* Allows logos to wrap on smaller screens if space is too constrained */
+    justify-content: flex-start; /* Align logos to the start of their container */
+    padding: 1rem 0; /* Vertical padding within the logo container */
+    width: 100%; /* Take full width of its grid column */
+}
+
+.resume-logos img {
+    /* Critical overrides for images within the resume-logos container */
+    max-height: 160px !important; /* Adjusted height for better fit within 1fr column, adjust as needed */
+    width: auto !important; /* Crucial: Force width to auto to respect aspect ratio and flex layout */
+    object-fit: contain; /* Ensures the entire logo is visible without cropping */
+    box-shadow: none !important; /* Force removal of shadow */
+    background-color: var(--light-background) !important; /* Force solid background to fix checkerboard */
+    border-radius: 0 !important; /* Force removal of border-radius from general img styling */
+    flex-shrink: 0; /* Prevent images from shrinking below their intrinsic size */
+    padding: 0; /* No additional internal padding on the image itself */
+    border: none !important; /* Ensure no borders are applied from other rules */
+}
+
+
+/* --- Contact Page (Updated for light theme) --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--light-text-secondary);
+}
+
+.form-control {
+    width: 100%;
+    padding: 1rem;
+    background: #f0f0f0; /* Light grey background for fields */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: var(--light-text);
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(137, 180, 250, 0.4);
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* --- Contact Page Layout --- */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Form column takes 2/3, info column takes 1/3 */
+    gap: 3rem; /* Space between the two columns */
+    margin-top: 2.5rem; /* Space below the intro text */
+    align-items: start; /* Align items to the top of their grid cell */
+}
+
+.contact-form-column {
+    /* No specific styling needed here, it just contains the form */
+}
+
+.contact-info-panel {
+    /* slightly darker background for better contrast */
+    background-color: #eceff1; /* adjust hex to taste: lower = darker */
+    padding: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    color: var(--light-text);
+}
+
+.contact-info-panel h2 {
+    font-size: 1.5rem;
+    color: var(--light-text);
+    margin-bottom: 1.5rem;
+}
+
+.contact-info-panel p {
+    color: var(--light-text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.contact-info-panel p:last-of-type {
+    margin-bottom: 0;
+}
+
+.contact-info-panel strong {
+    color: var(--light-text);
+}
+
+.contact-info-panel a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info-panel a:hover {
+    color: var(--light-btn-hover);
+    text-decoration: underline;
+}
+
+.contact-motto {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--light-border);
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+
+/* --- HOME PAGE STYLES (Largely Unchanged) --- */
+.home-hero {
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-color);
+}
+.hero-text h1 {
+    font-size: 5rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--primary-color);
+}
+.hero-text p {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+.home-summary-container {
+    background-color: var(--light-background);
+    color: var(--light-text);
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    position: relative;
+    z-index: 1;
+}
+.page-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 5rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 4rem;
+}
+.page-summary:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+/* This rule applies to 2nd and 4th page-summary. Resume is 3rd. */
+.page-summary:nth-child(even) {
+    grid-template-areas: "content image";
+}
+.page-summary:nth-child(even) img { grid-area: image; }
+.page-summary:nth-child(even) .summary-content { grid-area: content; }
+
+/* General styling for images directly inside .page-summary, this needs to be overridden for logos */
+.page-summary img {
+    width: 100%; /* This is a common conflict */
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+/* No change needed for .home-summary-container .btn */
+
+
+/* --- FOOTER --- */
+.site-footer {
+    background: var(--dark-background);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+.site-footer .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 0 2rem;
+    flex-wrap: wrap;
+}
+.site-footer p, .site-footer a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin: 0;
+    transition: color 0.3s;
+    font-size: 0.9rem;
+}
+.site-footer a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Project Detail Page Styles --- */
+.project-detail-page h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.project-detail-page h2 {
+    text-align: center;
+    color: var(--light-text-secondary);
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+}
+
+.breadcrumbs {
+    font-size: 0.9rem;
+    color: var(--light-text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.breadcrumbs a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.project-main-image {
+    width: 100%;
+    max-width: 500px; /* Adjust max-width as desired for your main image */
+    height: auto;
+    display: block;
+    margin: 0 auto 2.5rem auto; /* Center image and add spacing below */
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    object-fit: cover; /* Ensures image covers area, might crop slightly if aspect ratio differs */
+}
+
+.project-description {
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* auto-fill prevents stretching */
+    gap: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    justify-content: center; /* Center gallery when fewer images */
+}
+
+.project-gallery img {
+    width: 100%;
+    height: 400px; /* Increased height for taller images */
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.project-gallery img:hover {
+    transform: scale(1.02);
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    h1 { font-size: 2.5rem; }
+    .content-panel {
+        margin-top: 6rem;
+        padding: 1.5rem;
+    }
+
+    .about-layout {
+        grid-template-columns: 1fr; /* Stack on mobile */
+        text-align: center;
+    }
+
+    .about-headshot {
+        max-width: 200px;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-text h1 {
+        font-size: 3rem;
+    }
+    .hero-text p {
+        font-size: 1.2rem;
+    }
+
+    .page-summary {
+        grid-template-columns: 1fr; /* Stack on mobile */
+    }
+
+    /* Override for the resume summary specifically on mobile */
+    .home-summary-container .page-summary:nth-child(3) {
+        grid-template-columns: 1fr; /* Stack logo container and text container */
+        grid-template-rows: auto auto; /* Define rows for stacking */
+    }
+
+    .page-summary:nth-child(even) {
+        grid-template-areas: unset;
+    }
+    .page-summary:nth-child(even) img,
+    .page--summary:nth-child(even) .summary-content {
+       grid-area: unset;
+    }
+
+    .page-summary img {
+       grid-row: 1;
+    }
+
+    .site-footer .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .resume-logos {
+        justify-content: center; /* Ensure logos are centered on small screens */
+    }
+
+    /* Responsive adjustments for project detail page */
+    .project-detail-page h1 {
+        font-size: 2.5rem;
+    }
+    .project-detail-page h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .project-main-image {
+        margin-bottom: 1.5rem;
+    }
+    .project-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    .project-gallery {
+        grid-template-columns: 1fr; /* Stack gallery images on small screens */
+    }
+    .project-gallery img {
+        height: 200px; /* Adjust height for stacked gallery images */
+    }
+
+    /* Responsive adjustments for Contact Page */
+    .contact-layout {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        gap: 2rem;
+    }
+
+    .contact-info-panel {
+        padding: 1.5rem;
+    }
+
+    .contact-info-panel h2 {
+        margin-bottom: 1rem;
+    }
+    .contact-info-panel .contact-motto {
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+}
+
+/* --- Global Styles & Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #89b4fa; /* From your JS file */
+    --border-color: rgba(137, 180, 250, 0.25);
+    --text-color: #E0E0E0;
+    --text-secondary: #A0A0B0;
+    --dark-background: #0A0A14;
+    --light-background: #fdfdfd;
+    --light-border: #eeeeee;
+    --light-text: #222222;
+    --light-text-secondary: #444444;
+    --light-btn-hover: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--dark-background); /* Dark blue/black background */
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto; /* This tells the main content to grow and fill available space */
+}
+
+/* --- Canvas Background --- */
+#pcb-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Place it behind all content */
+}
+
+/* --- Main Layout & NEW Floating Panel --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* REPLACES .glass-card */
+.content-panel {
+    background-color: var(--light-background);
+    color: var(--light-text);
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    margin-top: 8rem; /* Space for the fixed nav */
+    margin-bottom: 4rem; /* Space before the footer */
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 10, 20, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 2rem;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.nav-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-logo:hover {
+    color: var(--text-color);
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+}
+
+.nav-item {
+    margin-left: 2rem;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-bottom-color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/* --- General Content Styling (for light panels) --- */
+.content-panel h1,
+.content-panel h2,
+.content-panel h3 {
+    color: var(--light-text);
+}
+
+.content-panel p {
+    color: var(--light-text-secondary);
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 3rem; margin-bottom: 1rem; }
+h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+
+.btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--dark-background);
+    border: 2px solid var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--light-btn-hover);
+    color: var(--light-background);
+    border-color: var(--light-btn-hover);
+}
+
+/* --- About Me Page (Headshot Layout) --- */
+.about-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-layout .about-headshot {
+    width: 100%;
+    max-width: 380px;
+    height: 380px;
+    border-radius: 12px; /* Square with slightly rounded corners */
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+    justify-self: center;
+    display: block;
+}
+
+/* --- Projects Page (Updated for light theme) --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background: #ffffff;
+    border: 1px solid var(--light-border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.project-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    background-color: #e0e0e0; /* Lighter placeholder color */
+}
+
+.project-card .project-info {
+    padding: 1.5rem;
+}
+
+/* --- Resume Page --- */
+.resume-pdf-container {
+    width: 100vw;
+    max-width: 1000px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    height: 80vh;
+    border: 1px solid var(--light-border);
+    border-radius: 5px;
+    overflow: hidden;
+    background: #fff;
+    margin-bottom: 3.5rem;
+}
+.resume-pdf-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Internship section styling */
+.internship-section {
+    margin-top: 2rem;
+}
+
+.internship-entry {
+    margin-bottom: 2rem;
+}
+
+.internship-section ul {
+    margin-left: 2rem;
+    padding-left: 1rem;
+}
+
+/* --- HOME PAGE SPECIFIC STYLES FOR RESUME SECTION LOGOS --- */
+.resume-logos {
+    display: flex; /* Makes logos display side-by-side */
+    align-items: center; /* Vertically aligns logos */
+    gap: 2.5rem; /* Space between logos, adjust as needed */
+    flex-wrap: wrap; /* Allows logos to wrap on smaller screens if space is too constrained */
+    justify-content: flex-start; /* Align logos to the start of their container */
+    padding: 1rem 0; /* Vertical padding within the logo container */
+    width: 100%; /* Take full width of its grid column */
+}
+
+.resume-logos img {
+    /* Critical overrides for images within the resume-logos container */
+    max-height: 160px !important; /* Adjusted height for better fit within 1fr column, adjust as needed */
+    width: auto !important; /* Crucial: Force width to auto to respect aspect ratio and flex layout */
+    object-fit: contain; /* Ensures the entire logo is visible without cropping */
+    box-shadow: none !important; /* Force removal of shadow */
+    background-color: var(--light-background) !important; /* Force solid background to fix checkerboard */
+    border-radius: 0 !important; /* Force removal of border-radius from general img styling */
+    flex-shrink: 0; /* Prevent images from shrinking below their intrinsic size */
+    padding: 0; /* No additional internal padding on the image itself */
+    border: none !important; /* Ensure no borders are applied from other rules */
+}
+
+
+/* --- Contact Page (Updated for light theme) --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--light-text-secondary);
+}
+
+.form-control {
+    width: 100%;
+    padding: 1rem;
+    background: #f0f0f0; /* Light grey background for fields */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: var(--light-text);
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(137, 180, 250, 0.4);
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* --- Contact Page Layout --- */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Form column takes 2/3, info column takes 1/3 */
+    gap: 3rem; /* Space between the two columns */
+    margin-top: 2.5rem; /* Space below the intro text */
+    align-items: start; /* Align items to the top of their grid cell */
+}
+
+.contact-form-column {
+    /* No specific styling needed here, it just contains the form */
+}
+
+.contact-info-panel {
+    /* slightly darker background for better contrast */
+    background-color: #eceff1; /* adjust hex to taste: lower = darker */
+    padding: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    color: var(--light-text);
+}
+
+.contact-info-panel h2 {
+    font-size: 1.5rem;
+    color: var(--light-text);
+    margin-bottom: 1.5rem;
+}
+
+.contact-info-panel p {
+    color: var(--light-text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.contact-info-panel p:last-of-type {
+    margin-bottom: 0;
+}
+
+.contact-info-panel strong {
+    color: var(--light-text);
+}
+
+.contact-info-panel a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info-panel a:hover {
+    color: var(--light-btn-hover);
+    text-decoration: underline;
+}
+
+.contact-motto {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--light-border);
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+
+/* --- HOME PAGE STYLES (Largely Unchanged) --- */
+.home-hero {
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-color);
+}
+.hero-text h1 {
+    font-size: 5rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--primary-color);
+}
+.hero-text p {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+.home-summary-container {
+    background-color: var(--light-background);
+    color: var(--light-text);
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    position: relative;
+    z-index: 1;
+}
+.page-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 5rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 4rem;
+}
+.page-summary:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+/* This rule applies to 2nd and 4th page-summary. Resume is 3rd. */
+.page-summary:nth-child(even) {
+    grid-template-areas: "content image";
+}
+.page-summary:nth-child(even) img { grid-area: image; }
+.page-summary:nth-child(even) .summary-content { grid-area: content; }
+
+/* General styling for images directly inside .page-summary, this needs to be overridden for logos */
+.page-summary img {
+    width: 100%; /* This is a common conflict */
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+/* No change needed for .home-summary-container .btn */
+
+
+/* --- FOOTER --- */
+.site-footer {
+    background: var(--dark-background);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+.site-footer .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 0 2rem;
+    flex-wrap: wrap;
+}
+.site-footer p, .site-footer a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin: 0;
+    transition: color 0.3s;
+    font-size: 0.9rem;
+}
+.site-footer a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Project Detail Page Styles --- */
+.project-detail-page h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.project-detail-page h2 {
+    text-align: center;
+    color: var(--light-text-secondary);
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+}
+
+.breadcrumbs {
+    font-size: 0.9rem;
+    color: var(--light-text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.breadcrumbs a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.project-main-image {
+    width: 100%;
+    max-width: 500px; /* Adjust max-width as desired for your main image */
+    height: auto;
+    display: block;
+    margin: 0 auto 2.5rem auto; /* Center image and add spacing below */
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    object-fit: cover; /* Ensures image covers area, might crop slightly if aspect ratio differs */
+}
+
+.project-description {
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* auto-fill prevents stretching */
+    gap: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    justify-content: center; /* Center gallery when fewer images */
+}
+
+.project-gallery img {
+    width: 100%;
+    height: 400px; /* Increased height for taller images */
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.project-gallery img:hover {
+    transform: scale(1.02);
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    h1 { font-size: 2.5rem; }
+    .content-panel {
+        margin-top: 6rem;
+        padding: 1.5rem;
+    }
+
+    .about-layout {
+        grid-template-columns: 1fr; /* Stack on mobile */
+        text-align: center;
+    }
+
+    .about-headshot {
+        max-width: 200px;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-text h1 {
+        font-size: 3rem;
+    }
+    .hero-text p {
+        font-size: 1.2rem;
+    }
+
+    .page-summary {
+        grid-template-columns: 1fr; /* Stack on mobile */
+    }
+
+    /* Override for the resume summary specifically on mobile */
+    .home-summary-container .page-summary:nth-child(3) {
+        grid-template-columns: 1fr; /* Stack logo container and text container */
+        grid-template-rows: auto auto; /* Define rows for stacking */
+    }
+
+    .page-summary:nth-child(even) {
+        grid-template-areas: unset;
+    }
+    .page-summary:nth-child(even) img,
+    .page--summary:nth-child(even) .summary-content {
+       grid-area: unset;
+    }
+
+    .page-summary img {
+       grid-row: 1;
+    }
+
+    .site-footer .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .resume-logos {
+        justify-content: center; /* Ensure logos are centered on small screens */
+    }
+
+    /* Responsive adjustments for project detail page */
+    .project-detail-page h1 {
+        font-size: 2.5rem;
+    }
+    .project-detail-page h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;

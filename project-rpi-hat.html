@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raspberry Pi HAT | Brady Kuhn Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- Custom styles for project detail pages --- */
+        .project-description h3 {
+            font-size: 1.6rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .project-description ul {
+            padding-left: 2rem; /* Adds indentation to the bullet points */
+            margin-bottom: 1.5rem; /* Adds space after the list */
+        }
+        .project-description li {
+            margin-bottom: 0.75rem; /* Adds space between each bullet point */
+            padding-left: 0.5rem; /* Aligns text neatly after the bullet */
+        }
+        /* Make the first subheading have a little less top margin */
+        .project-description h3:first-of-type {
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="pcb-background"></canvas>
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">BK</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About Me</a></li>
+                    <li class="nav-item"><a href="projects.html" class="nav-link active">Projects</a></li>
+                    <li class="nav-item"><a href="resume.html" class="nav-link">Resume</a></li>
+                    <li class="nav-item"><a href="reflections.html" class="nav-link">Reflections</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        <section class="content-panel project-detail-page">
+            <p class="breadcrumbs"><a href="projects.html">Projects</a> > Raspberry Pi HAT</p>
+            <h1>Raspberry Pi HAT</h1>
+            <h2>Power & Interface HAT</h2>
+            <img src="images/rpi_hat_render.png" alt="Raspberry Pi HAT" class="project-main-image">
+            <div class="project-description">
+
+                <h3>Project Overview</h3>
+                <p>Students had a need for a simple way to power a Raspberry Pi for their various academic projects, so I designed this "starter HAT" (Hardware Attached on Top) to fill that need. It features a buck regulator capable of outputting 4A and a blank canvas so student can modify the board files to meet their project needs.</p>
+
+                <h3>Skills & Learning</h3>
+                <p>I wanted a robust voltage regulator layout that could withstand any amount of abuse a student could throw at it, so I carefully read the datasheet's application notes to ensure proper implementation and reliability. Like many of my first revisions, it was not perfect the first time. To those that are interested, I did not correctly connect the analog ground of the regulator to the system ground, so the board did not operate. This was fixed with a jumper wire and will be corrected soon in the next revision.</p>
+
+                <p>This was another great project to strengthen my KiCad skills and ability to extract important information from component datasheets.</p>
+
+            </div>
+            <p style="text-align: center; margin-top: 3rem;">
+                <a href="projects.html" class="btn">Back to All Projects</a>
+            </p>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <a href="mailto:bradykuhn1@outlook.com">Email: bradykuhn1@outlook.com</a>
+            <a href="https://www.linkedin.com/in/brady-kuhn/" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+    <script src="background.js"></script>
+</body>
+</html>

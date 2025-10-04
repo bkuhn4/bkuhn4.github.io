@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iRobot Mars Rover | Brady Kuhn Projects</title>
+    <title>RF Characterization Board | Brady Kuhn Projects</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <canvas id="pcb-background"></canvas>
-
     <header class="navbar">
         <div class="container">
             <a href="index.html" class="nav-logo">BK</a>
@@ -24,35 +23,28 @@
             </nav>
         </div>
     </header>
-
     <main class="container">
         <section class="content-panel project-detail-page">
-            <p class="breadcrumbs"><a href="projects.html">Projects</a> > iRobot Mars Rover</p>
-
-            <h1>iRobot Mars Rover</h1>
-            <h2>CprE 288 - Embedded Systems</h2>
-
-            <img src="images/cybot.jpg" alt="iRobot Mars Rover Main Image" class="project-main-image">
-
+            <p class="breadcrumbs"><a href="projects.html">Projects</a> > RF Characterization Board</p>
+            <h1>RF Characterization Board</h1>
+            <h2>EE 414/514 Microwave Engineering</h2>
+            <div class="project-main-image-wrapper">
+                <img src="images/rf_render.png" alt="RF Board" class="project-main-image">
+            </div>
             <div class="project-description">
-                <p>
-                    Paragraph 1.
-                </p>
-                <p>
-                    Paragraph 2.
-                </p>
-                <p>
-                    Paragraph 3.
-                </p>
-                <!-- Add more paragraphs as needed for a longer description -->
+                <p>This PCB will be used in the Microwave Engineering lab to measure the RF characteristics of different resistors, capacitors, and inductors. These are designed to operate up to 26 GHz, so the design and assembly required extreme attention to detail. At these frequencies, any faults would affect the accuracy of the measurements. The design process of this board taught me techniques such as impedance matching, careful component placement, and other high-frequency board layout considerations.</p>
             </div>
 
-            <h3>Additional Images & Details</h3>
+            <h3>Additional Images</h3>
             <div class="project-gallery">
-                <img src="images/irobot_detail_1.jpg" alt="iRobot Rover Sensor Layout">
-                <img src="images/irobot_detail_2.jpg" alt="iRobot Rover Control Board">
-                <img src="images/irobot_detail_3.jpg" alt="iRobot Rover Navigating Course">
-                <!-- Add more images as needed -->
+                <img src="images/rf_pcb.jpeg" alt="Assembled RF Characterization Board">
+                <img src="images/rf_pcb_all.jpeg" alt="Assembled RF Characterization Boards">
+            </div>
+
+            <h3>Acknowledgements</h3>
+            <div class="acknowledgements-section">
+                <p><strong>Prof. Nathan Neihart:</strong> Original board design</p>
+                <p><strong>Aidan Preves:</strong> PCB layout</p>
             </div>
 
             <p style="text-align: center; margin-top: 3rem;">
@@ -60,14 +52,12 @@
             </p>
         </section>
     </main>
-
     <footer class="site-footer">
         <div class="container">
             <a href="mailto:bradykuhn1@outlook.com">Email: bradykuhn1@outlook.com</a>
             <a href="https://www.linkedin.com/in/brady-kuhn/" target="_blank">LinkedIn</a>
         </div>
     </footer>
-
     <script src="background.js"></script>
 </body>
 </html>

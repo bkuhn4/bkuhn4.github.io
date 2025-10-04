@@ -5,6 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume | Brady Kuhn</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- Custom styles for project detail pages --- */
+        .content-panel h3 {
+            font-size: 1.6rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .content-panel ul {
+            padding-left: 2rem; /* Adds indentation to the bullet points */
+            margin-bottom: 1.5rem; /* Adds space after the list */
+        }
+        .content-panel li {
+            margin-bottom: 0.75rem; /* Adds space between each bullet point */
+            padding-left: 0.5rem; /* Aligns text neatly after the bullet */
+        }
+        /* Make the first subheading have a little less top margin */
+        .content-panel h3:first-of-type {
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 <body>
     <canvas id="pcb-background"></canvas>
@@ -18,6 +38,7 @@
                     <li class="nav-item"><a href="about.html" class="nav-link">About Me</a></li>
                     <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
                     <li class="nav-item"><a href="resume.html" class="nav-link active">Resume</a></li>
+                    <li class="nav-item"><a href="reflections.html" class="nav-link">Reflections</a></li>
                     <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
@@ -34,6 +55,27 @@
             <div class="resume-pdf-container">
                 <iframe src="resume.pdf" title="Brady Kuhn's Resume"></iframe>
             </div>
+
+            <section class="experience-details">
+                <h2 style="text-align: center; margin-top: 3rem;">Technical and Professional Experience</h2>
+
+                <div>
+                    <h3>Iowa State Electronics & Technology Group - Student Engineer</h3>
+                    <ul>
+                        <li><strong>Duties and Projects:</strong> Design, fabricate, and troubleshoot hardware for ECpE labs.</li>
+                        <li><strong>Skills Learned:</strong> Circuit design, soldering, teamwork, and project management.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>John Deere - Product Engineering Internship</h3>
+                    <ul>
+                        <li><strong>Duties and Projects:</strong> Tasked with validating a new payload weighing system for articulated dump trucks by collecting and analyzing vehicle sensor data. I also researched alternative sensor options and connected with suppliers.</li>
+                        <li><strong>Skills Learned:</strong> VehicleSpy, Creo, data analysis, communication, and presentation skills.</li>
+                        <li><strong>Presentations:</strong> Presented findings and to engineering leadership and management teams.</li>
+                    </ul>
+                </div>
+            </section>
         </section>
     </main>
 
