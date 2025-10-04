@@ -8,13 +8,20 @@
     <style>
         .pdf-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
+            justify-content: center;
+        }
+        .pdf-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .pdf-item iframe {
             width: 100%;
-            height: 60vh;
+            max-width: 800px;
+            height: 65vh;
             border: 1px solid #ddd;
             border-radius: 6px;
             background: white;
@@ -44,18 +51,29 @@
     <main class="container">
         <section class="content-panel">
             <h1>Reflections</h1>
-            <p style="text-align:center; color: #666;">Place your reflective PDFs below. Replace the src attributes with your actual PDF filenames.</p>
+            <p style="text-align:center; color: #666;">Below are some of my reflective essays that cover my academic and personal growth.</p>
 
             <div class="pdf-grid">
                 <div class="pdf-item">
-                    <iframe src="pdfs/reflection1.pdf" title="Reflection 1"></iframe>
+                    <iframe src="pdfs/Gen Ed Reflection.pdf" title="General Education Reflection"></iframe>
+                    <div class="pdf-caption">General Education Reflection</div>
                 </div>
                 <div class="pdf-item">
-                    <iframe src="pdfs/reflection2.pdf" title="Reflection 2"></iframe>
+                    <iframe src="pdfs/A Reflective Journey - Navigating Your Cumulative Experience at Iowa State University.pdf" title="Cumulative Reflection"></iframe>
+                    <div class="pdf-caption">Cumulative Experience Reflection</div>
                 </div>
                 <div class="pdf-item">
-                    <iframe src="pdfs/reflection3.pdf" title="Reflection 3"></iframe>
+                    <iframe src="pdfs/Ethics Essay - Brady Kuhn.pdf" title="Ethics Essay"></iframe>
+                    <div class="pdf-caption">Ethics Essay</div>
                 </div>
+        <style>
+            .pdf-caption {
+                text-align: center;
+                margin-top: 0.5rem;
+                color: #444;
+                font-size: 1rem;
+            }
+        </style>
             </div>
 
         </section>
